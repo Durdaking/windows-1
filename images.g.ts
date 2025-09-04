@@ -4067,6 +4067,48 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 `;
+            case "image12":
+            case "Music Start Up":return img`
+ffffffffffffffffffff
+f111111111111111111f
+f11111fffffffff1111f
+f11111fffffffff1111f
+f11111fffffffff1111f
+f11111f1111111f1111f
+f11111f1111111f1111f
+f11111f1111111f1111f
+f11111f1111111f1111f
+f11111f1111111f1111f
+f11111f1111111f1111f
+f11111f1111111f1111f
+f1111f11111111f1111f
+f1fff11111111f11111f
+f1fff1111111f111111f
+f1fff1111fff1111111f
+f11111111fff1111111f
+f11111111fff1111111f
+f111111111111111111f
+ffffffffffffffffffff
+`;
+            case "image13":
+            case "Fruit Story Movie":return img`
+f f f f f f f f f f f f f f f f 
+f 2 2 2 2 2 2 7 2 2 2 2 2 2 2 f 
+f 2 2 2 2 7 7 7 7 7 2 2 2 2 2 f 
+f 2 2 2 3 3 7 7 7 3 3 2 2 2 2 f 
+f 2 2 3 3 3 3 3 3 1 f 3 2 2 2 f 
+f 2 2 3 f 1 3 3 3 f f 3 2 2 2 f 
+f 2 2 3 f f 3 3 3 3 3 3 2 2 2 f 
+f 2 2 3 1 3 3 3 1 3 3 3 2 2 2 f 
+f 2 2 3 3 3 3 3 3 3 3 3 2 2 2 f 
+f 2 2 2 3 3 1 3 3 1 3 2 2 2 2 f 
+f 2 2 2 3 3 3 3 3 3 3 2 2 2 2 f 
+f 2 2 2 2 3 3 1 3 3 2 2 2 2 2 f 
+f 2 2 2 2 2 3 3 3 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 3 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f f f f f f f f f f f f f f f f 
+`;
         }
         return null;
     })

@@ -219,6 +219,16 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Test Book Page 0"
     },
+    "image12": {
+        "data": "hwQUABQAAAD/////////////AAAfERERERERERHxAAAfERERERHx/xHxAAAfERERERHx/xHxAAAfERERERHx/xHxAAAfEREREREfERHxAAAf//////8RERHxAAAf/x8RERERERHxAAAf/x8RERERERHxAAAf/x8RERER8f/xAAAf/x8RERER8f/xAAAf/x8RERER8f/xAAAf/x8RERERHxHxAAAf/x8RERHxERHxAAAf//////8fERHxAAAfERERERERERHxAAAfERERERERERHxAAAfERERERERERHxAAAfERERERERERHxAAD/////////////AAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Music Start Up"
+    },
+    "image13": {
+        "data": "hwQQABAAAAD//////////y8iIiIiIiLyLyIiIiIiIvIvIjMzIyIi8i8y8x8zIyLyLzcTPzMzIvIvdzMzEzMj8n93MzMzEzPyL3czEzMzI/IvN/EzEzMi8i8y/zMzIyLyLyIzMyMiIvIvIiIiIiIi8i8iIiIiIiLyLyIiIiIiIvL//////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Fruit Story Movie"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
