@@ -1,0 +1,93 @@
+// Auto-generated code. Do not edit.
+namespace myTiles {
+    //% fixedInstance jres blockIdentity=images._tile
+    export const transparency16 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile1 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile2 = image.ofBuffer(hex``);
+
+    helpers._registerFactory("tilemap", function(name: string) {
+        switch(helpers.stringTrim(name)) {
+            case "level3":
+            case "level3":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, [myTiles.transparency16], TileScale.Sixteen);
+            case "level2":
+            case "level2":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, [myTiles.transparency16], TileScale.Sixteen);
+            case "Maze Game tile map":
+            case "level1":return tiles.createTilemap(hex`220018000d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0a01010101010a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a010d0d0a010a0a0a0101010a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a01010d0d0a010a010a0a0a0101010a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0101010a0d0d0a010a010a0a0a0a0a010101010a0a0a0a0a0a0a0a0a0a0a01010101010a0a0a0d0d01010a01010a0a0a0a0a0a0a0101010101010101010101010101010a0a0a0a0a0d0d010a0a0a010a0a0a0a0a0a0a0a0a01010a0a0a0a0a0a0a0a0a010a0a0a0a0a0a0d0d010a0a01010a0a0a0a0a0a0a0a0a010a0a0a0a0a01010a0a0a010a0a0a0a0a0a0d0d010a0a0a01010101010101010101010a0a0a0a010101010a0a010a0a0a0a0a0a0d0d01010a0a010a0a0a0a0a0a0a0a010a0a0a0a0a010a0a01010a010a0a0a0a0a0a0d0d0a010a0a010a0a0a0a0a0a0a0a010a0a0a0a010a0a0a0a0101010a0a0a0a0a0a0d0d0a01010a010a0a0a0a0a0a0a010102040301010a0a0a0a0a0a0a0a0a0a0a0a0a0d0d0a0a010a010a0a0a010101010101050b090101010101010101010101010a0a0a0d0d0a0a010a010a0a01010a0a0a0a0a0607080a0a0a0a0a0a0a0a0a0a0a01010a0a0d0d0a01010a010a0a010a0a0a0a0a0a0a010a0a0a0a0a0a0a0a0a0a0a0a0a010a0a0d0d0a010a0a01010a010a0a0a0a0a0a0a01010a0a0a0a0a0a0a0a0a0a0a01010a0a0d0d0a010a0a010a0a010a0a0a0a0a0a0a0a010a0a0a0a0a0a0a0a0a0a0a010a0a0a0d0d0a01010a0a0a01010a0a0a0a0a0a0a0a010a0a0a0101010101010101010a0a0a0d0d0a0a01010a0a010a0a0a0a0a0a0a0a0a010a0a0a010a0a0a0a01010a0a0a0a0a0d0d0a0a0a010a01010a0a0a0a0a0a0a0a0a01010a01010a0a0a0a010a0a0a0a0a0a0d0d0a0a0a0101010a0a0a0a0a0a0a0a0a0a0a0101010a0a0a0a0a010a0a0a0a0a0a0d0d0a0a01010a0a0a0a0a0a0a0a0a0a0a0a0a0a01010101010101010101010a0a0a0d0d0a0c010a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a010101010d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d`, img`
+2222222222222222222222222222222222
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2................................2
+2222222222222222222222222222222222
+`, [myTiles.transparency16,sprites.dungeon.darkGroundCenter,sprites.dungeon.darkGroundNorthWest0,sprites.dungeon.darkGroundNorthEast0,sprites.dungeon.darkGroundNorth,sprites.dungeon.darkGroundWest,sprites.dungeon.darkGroundSouthWest0,sprites.dungeon.darkGroundSouth,sprites.dungeon.darkGroundSouthEast0,sprites.dungeon.darkGroundEast,sprites.dungeon.hazardLava0,myTiles.tile1,myTiles.tile2,sprites.dungeon.floorLight2], TileScale.Sixteen);
+        }
+        return null;
+    })
+
+    helpers._registerFactory("tile", function(name: string) {
+        switch(helpers.stringTrim(name)) {
+            case "transparency16":return transparency16;
+            case "Test Game Exit tile":
+            case "tile1":return tile1;
+            case "Test Game Objective":
+            case "tile2":return tile2;
+        }
+        return null;
+    })
+
+}
+// Auto-generated code. Do not edit.
