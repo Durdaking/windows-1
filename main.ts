@@ -19,17 +19,17 @@ let Exit_Butten: Sprite = null
 let The_Maze_Game_Test_Edition: Sprite = null
 let Curser2: Sprite = null
 let Page_Number = 0
-let Startup = 0
+let Player1: Sprite = null
 let Book_Startup = 0
 let Test_Book2: Sprite = null
-let Game_Selector2: Sprite = null
+let Startup = 0
 let Vidio: Sprite = null
+let Game_Selector2: Sprite = null
 let Ebook: Sprite = null
 let _Page: Sprite = null
 let _Page2: Sprite = null
 let Exit_Book2: Sprite = null
 let Read_Page: Sprite = null
-let Player1: Sprite = null
 // Loading screen
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Test_Game_Selector, function (sprite, otherSprite) {
     if (Backdrop_selector == 200) {
@@ -69,7 +69,8 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Turn_Page_Right, function (sprit
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
-    Startup = 9
+    tiles.placeOnTile(Player1, tiles.getTileLocation(15, 11))
+    info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Test_Book, function (sprite, otherSprite) {
     if (Backdrop_selector == 100) {
@@ -127,6 +128,11 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Game_Selector, function (sprite,
         Backdrop_selector = 3
     }
 })
+info.onLifeZero(function () {
+    if (Games_Startup == 2) {
+        Startup = 9
+    }
+})
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Vidio_player, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
         Backdrop_selector = 2
@@ -135,6 +141,22 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Vidio_player, function (sprite, 
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Test Game Exit tile`, function (sprite, location) {
     if (controller.A.isPressed()) {
         Startup = 3
+    }
+})
+forever(function () {
+    if (Backdrop_selector == 2) {
+        scene.setBackgroundImage(assets.image`Vidio Player App opend`)
+        sprites.destroy(Vidio)
+        sprites.destroy(Game_Selector2)
+        sprites.destroy(Curser2)
+        sprites.destroy(Ebook)
+        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
+        Exit_Butten.setPosition(125, 23)
+        Exit_Butten.changeScale(0.3, ScaleAnchor.BottomLeft)
+        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
+        Curser2.setStayInScreen(true)
+        controller.moveSprite(Curser2)
+        Backdrop_selector = 10
     }
 })
 // Start Screen
@@ -156,22 +178,6 @@ forever(function () {
         Ebook = sprites.create(assets.image`E book Selector`, SpriteKind.Ebook_Selector)
         Ebook.setPosition(60, 106)
         Ebook.changeScale(0.01, ScaleAnchor.BottomLeft)
-        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
-        Curser2.setStayInScreen(true)
-        controller.moveSprite(Curser2)
-        Backdrop_selector = 10
-    }
-})
-forever(function () {
-    if (Backdrop_selector == 2) {
-        scene.setBackgroundImage(assets.image`Vidio Player App opend`)
-        sprites.destroy(Vidio)
-        sprites.destroy(Game_Selector2)
-        sprites.destroy(Curser2)
-        sprites.destroy(Ebook)
-        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
-        Exit_Butten.setPosition(125, 23)
-        Exit_Butten.changeScale(0.3, ScaleAnchor.BottomLeft)
         Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
         Curser2.setStayInScreen(true)
         controller.moveSprite(Curser2)
@@ -300,6 +306,17 @@ forever(function () {
         scene.cameraFollowSprite(Player1)
         tiles.placeOnTile(Player1, tiles.getTileLocation(15, 11))
         Player1.setScale(0.5, ScaleAnchor.Middle)
+        info.setLife(3)
+    }
+})
+forever(function () {
+    if (Startup == 9) {
+        sprites.destroy(Player1)
+        tiles.setCurrentTilemap(tilemap`level2`)
+        scene.centerCameraAt(0, 0)
+        scene.setBackgroundImage(assets.image`You Lose`)
+        pause(500)
+        game.gameOver(false)
     }
 })
 forever(function () {
@@ -329,16 +346,6 @@ forever(function () {
         scene.setBackgroundImage(assets.image`Game over win`)
         pause(500)
         game.gameOver(true)
-    }
-})
-forever(function () {
-    if (Startup == 9) {
-        sprites.destroy(Player1)
-        tiles.setCurrentTilemap(tilemap`level2`)
-        scene.centerCameraAt(0, 0)
-        scene.setBackgroundImage(assets.image`You Lose`)
-        pause(500)
-        game.gameOver(false)
     }
 })
 forever(function () {
