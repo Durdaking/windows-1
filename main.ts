@@ -5588,7 +5588,7 @@ forever(function () {
             77777777777777777777777777777777777777777777777777777777c.cfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             77777777777777777777777777777777777777777777777777777777.cffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             `)
-        pause(10000)
+        pause(3000)
         game.setGameOverMessage(true, "Now Exiting Press A")
         game.gameOver(true)
     }
