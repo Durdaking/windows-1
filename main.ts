@@ -187,6 +187,9 @@ scene.onOverlapTile(SpriteKind.Player2, sprites.dungeon.hazardLava0, function (s
     if (_2dLevel == 2) {
         tiles.placeOnTile(_2d_Player, tiles.getTileLocation(16, 23))
     }
+    if (_2dLevel == 3) {
+        tiles.placeOnTile(_2d_Player, tiles.getTileLocation(26, 30))
+    }
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Game_Selector, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
@@ -217,6 +220,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Test Game Exit tile`, functio
         Games_Startup = 3
         info.setLife(0)
     }
+})
+scene.onOverlapTile(SpriteKind.Player2, assets.tile`Next Level 0`, function (sprite, location) {
+    tiles.placeOnTile(_2d_Player, tiles.getTileLocation(26, 30))
+    _2dLevel = 3
 })
 // Game Selection Screen
 forever(function () {
