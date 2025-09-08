@@ -18,8 +18,8 @@ namespace SpriteKind {
     export const Player2 = SpriteKind.create()
 }
 let Startup = 0
-let Backdrop_selector = 0
 let Games_Startup = 0
+let Backdrop_selector = 0
 let _2d_Game: Sprite = null
 let Exit_Butten: Sprite = null
 let The_Maze_Game_Test_Edition: Sprite = null
@@ -42,6 +42,8 @@ let Exit_Book2: Sprite = null
 let Read_Page: Sprite = null
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Win game`, function (sprite, location) {
     Startup = 5
+    Games_Startup = 3
+    info.setLife(0)
 })
 // Loading screen
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Test_Game_Selector, function (sprite, otherSprite) {
@@ -183,9 +185,9 @@ info.onLifeZero(function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player2, assets.tile`Win game`, function (sprite, location) {
-    if (controller.A.isPressed()) {
-        Startup = 5
-    }
+    Startup = 5
+    _2d_game = 5
+    info.setLife(0)
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Vidio_player, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
@@ -195,6 +197,8 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Vidio_player, function (sprite, 
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Test Game Exit tile`, function (sprite, location) {
     if (controller.A.isPressed()) {
         Startup = 3
+        Games_Startup = 3
+        info.setLife(0)
     }
 })
 // Game Selection Screen
