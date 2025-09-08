@@ -171,6 +171,7 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Ebook_Selector, function (sprite
 })
 scene.onOverlapTile(SpriteKind.Player2, sprites.dungeon.hazardLava0, function (sprite, location) {
     tiles.placeOnTile(_2d_Player, tiles.getTileLocation(3, 7))
+    pause(100)
     info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Game_Selector, function (sprite, otherSprite) {
@@ -180,6 +181,9 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Game_Selector, function (sprite,
 })
 info.onLifeZero(function () {
     if (Games_Startup == 2) {
+        Startup = 9
+    }
+    if (_2d_game == 4) {
         Startup = 9
     }
 })
@@ -717,7 +721,7 @@ forever(function () {
 })
 forever(function () {
     if (_2d_game == 3) {
-        tiles.setCurrentTilemap(tilemap`level4`)
+        tiles.setCurrentTilemap(tilemap`2dtilemap`)
         _2d_Player = sprites.create(assets.image`2d Game player`, SpriteKind.Player2)
         _2d_Player.ay = 600
         scene.cameraFollowSprite(_2d_Player)
