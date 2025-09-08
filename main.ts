@@ -17,8 +17,6 @@ namespace SpriteKind {
     export const twod_game = SpriteKind.create()
     export const Player2 = SpriteKind.create()
 }
-let _2d_game = 0
-let _2d_Player: Sprite = null
 let Startup = 0
 let Backdrop_selector = 0
 let Games_Startup = 0
@@ -27,10 +25,12 @@ let Exit_Butten: Sprite = null
 let The_Maze_Game_Test_Edition: Sprite = null
 let Curser2: Sprite = null
 let Page_Number = 0
+let _2d_game = 0
 let Player1: Sprite = null
 let Book_Startup = 0
 let Test_Book2: Sprite = null
 let Play_Movie = 0
+let _2d_Player: Sprite = null
 let Game_Selector2: Sprite = null
 let Vidio: Sprite = null
 let Ebook: Sprite = null
@@ -40,13 +40,6 @@ let _Page: Sprite = null
 let _Page2: Sprite = null
 let Exit_Book2: Sprite = null
 let Read_Page: Sprite = null
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (_2d_game == 4) {
-        if (_2d_Player.isHittingTile(CollisionDirection.Bottom)) {
-            _2d_Player.vy = -200
-        }
-    }
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Win game`, function (sprite, location) {
     Startup = 5
 })
@@ -132,6 +125,8 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Fruit_Story_Movie, function (spr
 scene.onOverlapTile(SpriteKind.Player2, assets.tile`Test Game Exit tile`, function (sprite, location) {
     if (controller.A.isPressed()) {
         Startup = 3
+        _2d_game = 5
+        info.setLife(0)
     }
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Butten, function (sprite, otherSprite) {
@@ -276,27 +271,6 @@ forever(function () {
         Backdrop_selector = 10
     }
 })
-// Ebook Selection Screen
-forever(function () {
-    if (Backdrop_selector == 4) {
-        scene.setBackgroundImage(assets.image`Book Selection Sreen`)
-        sprites.destroy(Game_Selector2)
-        sprites.destroy(Music_Startup)
-        sprites.destroy(Vidio)
-        sprites.destroy(Curser2)
-        sprites.destroy(Ebook)
-        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
-        Exit_Butten.setPosition(125, 27)
-        Exit_Butten.changeScale(0.3, ScaleAnchor.BottomLeft)
-        Test_Book2 = sprites.create(assets.image`Test Book`, SpriteKind.Test_Book)
-        Test_Book2.setPosition(33, 72)
-        Test_Book2.changeScale(0.1, ScaleAnchor.BottomLeft)
-        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
-        Curser2.setStayInScreen(true)
-        controller.moveSprite(Curser2)
-        Backdrop_selector = 100
-    }
-})
 forever(function () {
     if (Backdrop_selector == 5) {
         scene.setBackgroundImage(img`
@@ -433,6 +407,27 @@ forever(function () {
         Curser2.setStayInScreen(true)
         controller.moveSprite(Curser2)
         Backdrop_selector = 10
+    }
+})
+// Ebook Selection Screen
+forever(function () {
+    if (Backdrop_selector == 4) {
+        scene.setBackgroundImage(assets.image`Book Selection Sreen`)
+        sprites.destroy(Game_Selector2)
+        sprites.destroy(Music_Startup)
+        sprites.destroy(Vidio)
+        sprites.destroy(Curser2)
+        sprites.destroy(Ebook)
+        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
+        Exit_Butten.setPosition(125, 27)
+        Exit_Butten.changeScale(0.3, ScaleAnchor.BottomLeft)
+        Test_Book2 = sprites.create(assets.image`Test Book`, SpriteKind.Test_Book)
+        Test_Book2.setPosition(33, 72)
+        Test_Book2.changeScale(0.1, ScaleAnchor.BottomLeft)
+        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
+        Curser2.setStayInScreen(true)
+        controller.moveSprite(Curser2)
+        Backdrop_selector = 100
     }
 })
 forever(function () {
@@ -678,6 +673,19 @@ forever(function () {
     }
 })
 forever(function () {
+    if (Book_Startup == 2) {
+        if (Page_Number == 0) {
+            scene.setBackgroundImage(assets.image`Test Book Page 0`)
+        }
+        if (Page_Number == 1) {
+            scene.setBackgroundImage(assets.image`Test Book P 1`)
+        }
+        if (Page_Number == 2) {
+            scene.setBackgroundImage(assets.image`Test Book P 2`)
+        }
+    }
+})
+forever(function () {
     if (Startup == 5) {
         tiles.setCurrentTilemap(tilemap`level3`)
         scene.centerCameraAt(0, 0)
@@ -688,6 +696,20 @@ forever(function () {
         scene.setBackgroundImage(assets.image`Game over win`)
         pause(500)
         game.gameOver(true)
+    }
+})
+forever(function () {
+    if (_2d_game == 4) {
+        if (controller.up.isPressed()) {
+            if (_2d_Player.isHittingTile(CollisionDirection.Bottom)) {
+                _2d_Player.vy = -200
+            }
+        }
+        if (controller.A.isPressed()) {
+            if (_2d_Player.isHittingTile(CollisionDirection.Bottom)) {
+                _2d_Player.vy = -200
+            }
+        }
     }
 })
 forever(function () {
@@ -704,19 +726,6 @@ forever(function () {
         scene.setBackgroundImage(assets.image`Games Startup screen 5`)
         pause(500)
         _2d_game = 3
-    }
-})
-forever(function () {
-    if (Book_Startup == 2) {
-        if (Page_Number == 0) {
-            scene.setBackgroundImage(assets.image`Test Book Page 0`)
-        }
-        if (Page_Number == 1) {
-            scene.setBackgroundImage(assets.image`Test Book P 1`)
-        }
-        if (Page_Number == 2) {
-            scene.setBackgroundImage(assets.image`Test Book P 2`)
-        }
     }
 })
 forever(function () {
