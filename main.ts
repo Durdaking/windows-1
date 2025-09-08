@@ -14,9 +14,15 @@ namespace SpriteKind {
     export const Book_Page = SpriteKind.create()
     export const Music_Start = SpriteKind.create()
     export const Fruit_Story_Movie = SpriteKind.create()
+    export const twod_game = SpriteKind.create()
+    export const Player2 = SpriteKind.create()
 }
+let _2d_game = 0
+let _2d_Player: Sprite = null
+let Startup = 0
 let Backdrop_selector = 0
 let Games_Startup = 0
+let _2d_Game: Sprite = null
 let Exit_Butten: Sprite = null
 let The_Maze_Game_Test_Edition: Sprite = null
 let Curser2: Sprite = null
@@ -25,21 +31,31 @@ let Player1: Sprite = null
 let Book_Startup = 0
 let Test_Book2: Sprite = null
 let Play_Movie = 0
-let Startup = 0
 let Game_Selector2: Sprite = null
-let Play_Movie_Fruit_Story: Sprite = null
 let Vidio: Sprite = null
 let Ebook: Sprite = null
 let Music_Startup: Sprite = null
+let Play_Movie_Fruit_Story: Sprite = null
 let _Page: Sprite = null
 let _Page2: Sprite = null
 let Exit_Book2: Sprite = null
 let Read_Page: Sprite = null
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (_2d_game == 4) {
+        if (_2d_Player.isHittingTile(CollisionDirection.Bottom)) {
+            _2d_Player.vy = -200
+        }
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Win game`, function (sprite, location) {
+    Startup = 5
+})
 // Loading screen
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Test_Game_Selector, function (sprite, otherSprite) {
     if (Backdrop_selector == 200) {
         if (Games_Startup == 0) {
             if (controller.A.isPressed()) {
+                sprites.destroy(_2d_Game)
                 sprites.destroy(Exit_Butten)
                 sprites.destroy(The_Maze_Game_Test_Edition)
                 sprites.destroy(Curser2)
@@ -65,6 +81,19 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Turn_Page_Left, function (sprite
     if (controller.A.isPressed()) {
         Page_Number += -1
         pause(500)
+    }
+})
+sprites.onOverlap(SpriteKind.Curser, SpriteKind.twod_game, function (sprite, otherSprite) {
+    if (Backdrop_selector == 200) {
+        if (_2d_game == 0) {
+            if (controller.A.isPressed()) {
+                _2d_game = 2
+                sprites.destroy(Curser2)
+                sprites.destroy(Exit_Butten)
+                sprites.destroy(The_Maze_Game_Test_Edition)
+                sprites.destroy(_2d_Game)
+            }
+        }
     }
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Turn_Page_Right, function (sprite, otherSprite) {
@@ -100,13 +129,15 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Fruit_Story_Movie, function (spr
         Play_Movie = 1
     }
 })
+scene.onOverlapTile(SpriteKind.Player2, assets.tile`Test Game Exit tile`, function (sprite, location) {
+    if (controller.A.isPressed()) {
+        Startup = 3
+    }
+})
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Butten, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
         Backdrop_selector = 1
     }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Test Game Objective`, function (sprite, location) {
-    Startup = 5
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Music_Start, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
@@ -138,6 +169,10 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Ebook_Selector, function (sprite
         Backdrop_selector = 4
     }
 })
+scene.onOverlapTile(SpriteKind.Player2, sprites.dungeon.hazardLava0, function (sprite, location) {
+    tiles.placeOnTile(_2d_Player, tiles.getTileLocation(3, 7))
+    info.changeLifeBy(-1)
+})
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Game_Selector, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
         Backdrop_selector = 3
@@ -146,6 +181,11 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Game_Selector, function (sprite,
 info.onLifeZero(function () {
     if (Games_Startup == 2) {
         Startup = 9
+    }
+})
+scene.onOverlapTile(SpriteKind.Player2, assets.tile`Win game`, function (sprite, location) {
+    if (controller.A.isPressed()) {
+        Startup = 5
     }
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Vidio_player, function (sprite, otherSprite) {
@@ -158,10 +198,35 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Test Game Exit tile`, functio
         Startup = 3
     }
 })
+// Game Selection Screen
+forever(function () {
+    if (Backdrop_selector == 3) {
+        scene.setBackgroundImage(assets.image`Test Game Menu`)
+        sprites.destroy(Game_Selector2)
+        sprites.destroy(Vidio)
+        sprites.destroy(Curser2)
+        sprites.destroy(Ebook)
+        sprites.destroy(Music_Startup)
+        _2d_Game = sprites.create(assets.image`2d game select`, SpriteKind.twod_game)
+        _2d_Game.setPosition(98, 75)
+        _2d_Game.changeScale(0.3, ScaleAnchor.BottomLeft)
+        The_Maze_Game_Test_Edition = sprites.create(assets.image`Test Game Selector`, SpriteKind.Test_Game_Selector)
+        The_Maze_Game_Test_Edition.setPosition(38, 75)
+        The_Maze_Game_Test_Edition.changeScale(0.3, ScaleAnchor.BottomLeft)
+        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
+        Exit_Butten.setPosition(124, 25)
+        Exit_Butten.changeScale(0.4, ScaleAnchor.BottomLeft)
+        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
+        Curser2.setStayInScreen(true)
+        controller.moveSprite(Curser2)
+        Backdrop_selector = 200
+    }
+})
 // Start Screen
 forever(function () {
     if (Backdrop_selector == 1) {
         sprites.destroyAllSpritesOfKind(SpriteKind.Butten)
+        sprites.destroy(_2d_Game)
         sprites.destroy(Curser2)
         sprites.destroy(Game_Selector2)
         sprites.destroy(The_Maze_Game_Test_Edition)
@@ -205,27 +270,6 @@ forever(function () {
         Curser2.setStayInScreen(true)
         controller.moveSprite(Curser2)
         Backdrop_selector = 10
-    }
-})
-// Game Selection Screen
-forever(function () {
-    if (Backdrop_selector == 3) {
-        scene.setBackgroundImage(assets.image`Test Game Menu`)
-        sprites.destroy(Game_Selector2)
-        sprites.destroy(Vidio)
-        sprites.destroy(Curser2)
-        sprites.destroy(Ebook)
-        sprites.destroy(Music_Startup)
-        The_Maze_Game_Test_Edition = sprites.create(assets.image`Test Game Selector`, SpriteKind.Test_Game_Selector)
-        The_Maze_Game_Test_Edition.setPosition(38, 75)
-        The_Maze_Game_Test_Edition.changeScale(0.3, ScaleAnchor.BottomLeft)
-        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
-        Exit_Butten.setPosition(124, 25)
-        Exit_Butten.changeScale(0.4, ScaleAnchor.BottomLeft)
-        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
-        Curser2.setStayInScreen(true)
-        controller.moveSprite(Curser2)
-        Backdrop_selector = 200
     }
 })
 // Ebook Selection Screen
@@ -535,6 +579,34 @@ forever(function () {
     }
 })
 forever(function () {
+    if (Startup == 9) {
+        sprites.destroy(Player1)
+        tiles.setCurrentTilemap(tilemap`level2`)
+        scene.centerCameraAt(0, 0)
+        scene.setBackgroundImage(assets.image`You Lose`)
+        pause(500)
+        game.gameOver(false)
+    }
+})
+forever(function () {
+    if (Startup == 3) {
+        tiles.setCurrentTilemap(tilemap`level3`)
+        scene.centerCameraAt(0, 0)
+        sprites.destroy(Player1)
+        sprites.destroy(_2d_Player)
+        Startup = 4
+        scene.setBackgroundImage(assets.image`Game exit 1`)
+        pause(500)
+        scene.setBackgroundImage(assets.image`Game exit 2`)
+        pause(500)
+        scene.setBackgroundImage(assets.image`Game exit 3`)
+        pause(500)
+        scene.setBackgroundImage(assets.image`Power Off Screen`)
+        pause(500)
+        game.gameOver(false)
+    }
+})
+forever(function () {
     if (Book_Startup == 1) {
         Page_Number = 0
         scene.setBackgroundImage(assets.image`Book Backdrop 1`)
@@ -551,23 +623,6 @@ forever(function () {
         Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
         Curser2.setStayInScreen(true)
         controller.moveSprite(Curser2)
-    }
-})
-forever(function () {
-    if (Startup == 3) {
-        tiles.setCurrentTilemap(tilemap`level3`)
-        scene.centerCameraAt(0, 0)
-        sprites.destroy(Player1)
-        Startup = 4
-        scene.setBackgroundImage(assets.image`Game exit 1`)
-        pause(500)
-        scene.setBackgroundImage(assets.image`Game exit 2`)
-        pause(500)
-        scene.setBackgroundImage(assets.image`Game exit 3`)
-        pause(500)
-        scene.setBackgroundImage(assets.image`Power Off Screen`)
-        pause(500)
-        game.gameOver(false)
     }
 })
 forever(function () {
@@ -588,6 +643,18 @@ forever(function () {
         scene.setBackgroundImage(assets.image`Book ExitScreen 4`)
         pause(500)
         game.gameOver(false)
+    }
+})
+forever(function () {
+    if (Games_Startup == 1) {
+        Games_Startup = 2
+        tiles.setCurrentTilemap(tilemap`Maze Game tile map`)
+        Player1 = sprites.create(assets.image`Test Player`, SpriteKind.Player)
+        controller.moveSprite(Player1)
+        scene.cameraFollowSprite(Player1)
+        tiles.placeOnTile(Player1, tiles.getTileLocation(15, 11))
+        Player1.setScale(0.5, ScaleAnchor.Middle)
+        info.setLife(3)
     }
 })
 forever(function () {
@@ -620,25 +687,19 @@ forever(function () {
     }
 })
 forever(function () {
-    if (Startup == 9) {
-        sprites.destroy(Player1)
-        tiles.setCurrentTilemap(tilemap`level2`)
-        scene.centerCameraAt(0, 0)
-        scene.setBackgroundImage(assets.image`You Lose`)
+    if (_2d_game == 2) {
+        _2d_game = 10
+        scene.setBackgroundImage(assets.image`Games Loading screen 1`)
         pause(500)
-        game.gameOver(false)
-    }
-})
-forever(function () {
-    if (Games_Startup == 1) {
-        Games_Startup = 2
-        tiles.setCurrentTilemap(tilemap`Maze Game tile map`)
-        Player1 = sprites.create(assets.image`Test Player`, SpriteKind.Player)
-        controller.moveSprite(Player1)
-        scene.cameraFollowSprite(Player1)
-        tiles.placeOnTile(Player1, tiles.getTileLocation(15, 11))
-        Player1.setScale(0.5, ScaleAnchor.Middle)
-        info.setLife(3)
+        scene.setBackgroundImage(assets.image`Games Loading screen 2`)
+        pause(500)
+        scene.setBackgroundImage(assets.image`Games Startup screen 3`)
+        pause(500)
+        scene.setBackgroundImage(assets.image`Games Startup screen 4`)
+        pause(500)
+        scene.setBackgroundImage(assets.image`Games Startup screen 5`)
+        pause(500)
+        _2d_game = 3
     }
 })
 forever(function () {
@@ -652,5 +713,17 @@ forever(function () {
         if (Page_Number == 2) {
             scene.setBackgroundImage(assets.image`Test Book P 2`)
         }
+    }
+})
+forever(function () {
+    if (_2d_game == 3) {
+        tiles.setCurrentTilemap(tilemap`level4`)
+        _2d_Player = sprites.create(assets.image`2d Game player`, SpriteKind.Player2)
+        _2d_Player.ay = 600
+        scene.cameraFollowSprite(_2d_Player)
+        tiles.placeOnTile(_2d_Player, tiles.getTileLocation(3, 7))
+        controller.moveSprite(_2d_Player, 100, 0)
+        info.setLife(3)
+        _2d_game = 4
     }
 })
