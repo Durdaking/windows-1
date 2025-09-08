@@ -25,12 +25,13 @@ let Exit_Butten: Sprite = null
 let The_Maze_Game_Test_Edition: Sprite = null
 let Curser2: Sprite = null
 let Page_Number = 0
+let _2d_Player: Sprite = null
+let _2dLevel = 0
 let _2d_game = 0
 let Player1: Sprite = null
 let Book_Startup = 0
 let Test_Book2: Sprite = null
 let Play_Movie = 0
-let _2d_Player: Sprite = null
 let Game_Selector2: Sprite = null
 let Vidio: Sprite = null
 let Ebook: Sprite = null
@@ -77,6 +78,10 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Turn_Page_Left, function (sprite
         Page_Number += -1
         pause(500)
     }
+})
+scene.onOverlapTile(SpriteKind.Player2, assets.tile`Next Level 3`, function (sprite, location) {
+    tiles.placeOnTile(_2d_Player, tiles.getTileLocation(16, 23))
+    _2dLevel = 2
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.twod_game, function (sprite, otherSprite) {
     if (Backdrop_selector == 200) {
@@ -161,15 +166,27 @@ sprites.onOverlap(SpriteKind.Curser, SpriteKind.Book_Page, function (sprite, oth
         }
     }
 })
+scene.onOverlapTile(SpriteKind.Player2, assets.tile`Next Level 2`, function (sprite, location) {
+    tiles.placeOnTile(_2d_Player, tiles.getTileLocation(1, 23))
+    _2dLevel = 1
+})
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Ebook_Selector, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
         Backdrop_selector = 4
     }
 })
 scene.onOverlapTile(SpriteKind.Player2, sprites.dungeon.hazardLava0, function (sprite, location) {
-    tiles.placeOnTile(_2d_Player, tiles.getTileLocation(3, 7))
     pause(100)
     info.changeLifeBy(-1)
+    if (_2dLevel == 0) {
+        tiles.placeOnTile(_2d_Player, tiles.getTileLocation(3, 7))
+    }
+    if (_2dLevel == 1) {
+        tiles.placeOnTile(_2d_Player, tiles.getTileLocation(1, 23))
+    }
+    if (_2dLevel == 2) {
+        tiles.placeOnTile(_2d_Player, tiles.getTileLocation(16, 23))
+    }
 })
 sprites.onOverlap(SpriteKind.Curser, SpriteKind.Game_Selector, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {

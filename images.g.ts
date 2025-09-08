@@ -4109,25 +4109,6 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 `;
-            case "image16":
-            case "2d game select":return img`
-f f f f f f f f f f f f f f f f 
-f 1 1 1 1 1 1 1 1 1 1 1 1 2 1 f 
-f 1 1 2 2 2 1 1 1 1 1 1 1 2 1 f 
-f 1 1 1 1 2 2 1 1 1 1 1 1 2 1 f 
-f 1 1 1 1 1 2 1 1 1 1 2 2 2 1 f 
-f 1 1 2 2 2 1 1 1 1 1 2 1 2 1 f 
-f 1 1 2 2 1 2 2 1 1 1 2 2 2 1 f 
-f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-f 2 1 1 2 1 1 1 2 1 1 1 1 1 1 f 
-f 1 1 1 1 1 1 1 1 1 1 2 1 1 1 f 
-f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-f 1 1 1 1 1 1 1 1 1 1 1 1 2 2 f 
-f 1 1 1 1 1 1 1 1 1 2 2 1 1 1 f 
-f 1 1 1 1 1 2 2 1 1 1 1 1 1 1 f 
-f 1 2 2 1 1 1 1 1 1 1 1 1 1 1 f 
-f f f f f f f f f f f f f f f f 
-`;
             case "image17":
             case "2d Game player":return img`
 . . . . . . . . . . . . . . . . 
@@ -4146,6 +4127,25 @@ f f f f f f f f f f f f f f f f
 . . . . . . 2 2 2 . . . . . . . 
 . . . . . . 2 . 2 . . . . . . . 
 . . . . . . 2 . 2 . . . . . . . 
+`;
+            case "image16":
+            case "2d game select":return img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 4 4 4 4 4 4 4 4 4 4 4 4 f 4 2 
+2 4 4 f f f 4 4 4 4 4 4 4 f 4 2 
+2 4 4 4 4 f f 4 4 4 4 4 4 f 4 2 
+2 4 4 4 4 4 f 4 4 4 4 f f f 4 2 
+2 4 4 f f f 4 4 4 4 4 f 4 f 4 2 
+2 4 4 f f 4 f f 4 4 4 f f f 4 2 
+2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+2 f 4 4 f 4 4 4 f 4 4 4 4 4 4 2 
+2 4 4 4 4 4 4 4 4 4 4 f 4 4 4 2 
+2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+2 4 4 4 4 4 4 4 4 4 4 4 4 f f 2 
+2 4 4 4 4 4 4 4 4 4 f f 4 4 4 2 
+2 4 4 4 4 4 f f 4 4 4 4 4 4 4 2 
+2 4 f f 4 4 4 4 4 4 4 4 4 4 4 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 `;
         }
         return null;

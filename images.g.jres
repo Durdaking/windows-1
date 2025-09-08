@@ -229,15 +229,15 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Games Loading screen 1"
     },
-    "image16": {
-        "data": "hwQQABAAAAD//////////x8RERESERHxHxEREREREfIfEiESERER8h8SIRISERHxHyIhEREREfEfIRISEREh8R8RERIRESHxHxERERIREfEfERERERER8R8RERERERLxHxEiEiEREvEfERISERER8S8iIhIRIRHxHxEREREhEfH//////////w==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "2d game select"
-    },
     "image17": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAIAAAAAAAAgAAAAAAAAIiIgIgAAAAACIiIAAAAAACIiICIAAAAAACAAAAAAAAAAIAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "2d Game player"
+    },
+    "image16": {
+        "data": "hwQQABAAAAAiIiIiIiIiIkJERERPREQkQkRERERERC9CT/RPREREL0JP9E9PREQkQv/0RERERCRC9E9PRET0JEJERE9ERPQkQkRERE9ERCRCREREREREJEJERERERE8kQkT/T/RETyRCRE9PREREJPL//09E9EQkQkRERET0RCQiIiIiIiIiIg==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "2d game select"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
