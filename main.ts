@@ -280,6 +280,26 @@ forever(function () {
     }
 })
 forever(function () {
+    if (Backdrop_selector == 2) {
+        scene.setBackgroundImage(assets.image`Vidio Player App opend`)
+        sprites.destroy(Vidio)
+        sprites.destroy(Game_Selector2)
+        sprites.destroy(Curser2)
+        sprites.destroy(Ebook)
+        sprites.destroy(Music_Startup)
+        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
+        Exit_Butten.setPosition(125, 23)
+        Exit_Butten.changeScale(0.3, ScaleAnchor.BottomLeft)
+        Play_Movie_Fruit_Story = sprites.create(assets.image`Fruit Story Movie`, SpriteKind.Fruit_Story_Movie)
+        Play_Movie_Fruit_Story.setPosition(30, 60)
+        Play_Movie_Fruit_Story.changeScale(0.3, ScaleAnchor.BottomLeft)
+        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
+        Curser2.setStayInScreen(true)
+        controller.moveSprite(Curser2)
+        Backdrop_selector = 10
+    }
+})
+forever(function () {
     if (Play_Movie == 1) {
         Play_Movie = 100
         sprites.destroy(Play_Movie_Fruit_Story)
@@ -5591,26 +5611,6 @@ forever(function () {
         pause(3000)
         game.setGameOverMessage(true, "Now Exiting Press A")
         game.gameOver(true)
-    }
-})
-forever(function () {
-    if (Backdrop_selector == 2) {
-        scene.setBackgroundImage(assets.image`Vidio Player App opend`)
-        sprites.destroy(Vidio)
-        sprites.destroy(Game_Selector2)
-        sprites.destroy(Curser2)
-        sprites.destroy(Ebook)
-        sprites.destroy(Music_Startup)
-        Exit_Butten = sprites.create(assets.image`Butten`, SpriteKind.Butten)
-        Exit_Butten.setPosition(125, 23)
-        Exit_Butten.changeScale(0.3, ScaleAnchor.BottomLeft)
-        Play_Movie_Fruit_Story = sprites.create(assets.image`Fruit Story Movie`, SpriteKind.Fruit_Story_Movie)
-        Play_Movie_Fruit_Story.setPosition(30, 60)
-        Play_Movie_Fruit_Story.changeScale(0.3, ScaleAnchor.BottomLeft)
-        Curser2 = sprites.create(assets.image`Curser`, SpriteKind.Curser)
-        Curser2.setStayInScreen(true)
-        controller.moveSprite(Curser2)
-        Backdrop_selector = 10
     }
 })
 forever(function () {
